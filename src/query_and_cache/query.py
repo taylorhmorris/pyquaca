@@ -86,8 +86,6 @@ class Query:
             self.store_in_cache(search_string, results)
         except KeyError as e:
             self.logger.error("Error storing in cache: results does not have %s key", e)
-        except Exception as e:
-            self.logger.error("Error storing in cache: %s", e)
         self.logger.debug("Returning query results")
         return results
 
