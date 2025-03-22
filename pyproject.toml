@@ -25,5 +25,11 @@ Issues = "https://github.com/taylorhmorris/query_and_cache/issues"
 dev = [
   "pytest",
   "black",
-  "pylint"
+  "pylint",
+  "mypy",
+  "flake8",
+  "bandit",
+  "pyroma",
+  "isort",
+  "docformatter",
 ]
