@@ -1,2 +1,9 @@
+# Build Folders
 dist/
 *.egg-info/
+
+# Cache Folders
+__pycache__/
+cache/
+.pytest_cache/
+
