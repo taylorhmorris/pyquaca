@@ -8,9 +8,21 @@ from pathlib import Path
 import requests
 
 
-def store_in_cache_as_text(file_path: str, data):
-    """Write data to cache file"""
+def store_in_cache_as_text(file_path: str, data: str) -> bool:
+    """
+    Write data to cache file
+
+    Args:
+        file_path (str): The path to the cache file.
+        data (str): The data to store in the cache file.
+
+    Returns:
+        True if the data was successfully stored in the cache file, otherwise False
+    """
     logger = logging.getLogger("Cache")
+    if not file_path or len(file_path) == 0:
+        logger.error("File path is empty")
+        return False
     cache_folder = os.path.dirname(file_path)
     Path(cache_folder).mkdir(parents=True, exist_ok=True)
     logger.debug("Updating '%s' in cache", file_path)
@@ -24,8 +36,16 @@ def store_in_cache_as_text(file_path: str, data):
     return True
 
 
-def retrieve_from_cache_as_text(file_path: str):
-    """Retrieve query data from cache"""
+def retrieve_from_cache_as_text(file_path: str) -> str | bool:
+    """
+    Retrieve data from cache as str
+
+    Args:
+        file_path (str): The path to the cache file.
+
+    Returns:
+        The data from the cache file if it exists, otherwise False.
+    """
     logger = logging.getLogger("Cache")
     try:
         with open(file_path, "r", encoding="utf-8") as textfile:
@@ -36,9 +56,24 @@ def retrieve_from_cache_as_text(file_path: str):
     return False
 
 
-def store_in_cache(file_path: str, data):
-    """Write data to cache file"""
+def store_in_cache(file_path: str, data) -> bool:
+    """
+    Write data object to cache file
+
+    Args:
+        file_path (str): The path to the cache file.
+        data: The data to store in the cache file.
+
+    Returns:
+        True if the data was successfully stored in the cache file, otherwise False
+    """
     logger = logging.getLogger("Cache")
+    if not file_path or len(file_path) == 0:
+        logger.error("File path is empty")
+        return False
+    if not data:
+        logger.error("Data is empty")
+        return False
     cache_folder = os.path.dirname(file_path)
     Path(cache_folder).mkdir(parents=True, exist_ok=True)
     logger.debug("Updating '%s' in cache", file_path)
@@ -53,7 +88,15 @@ def store_in_cache(file_path: str, data):
 
 
 def retrieve_from_cache(file_path: str):
-    """Retrieve query data from cache"""
+    """
+    Retrieve query data from cache.
+
+    Args:
+        file_path (str): The path to the cache file.
+
+    Returns:
+        The data from the cache file if it exists, otherwise False.
+    """
     logger = logging.getLogger("Cache")
     try:
         with open(file_path, "r", encoding="utf-8") as json_file:
@@ -65,7 +108,7 @@ def retrieve_from_cache(file_path: str):
 
 
 def retrieve_or_request(url: str, path: str):
-    """Retrieve from cache or request"""
+    """Retrieve from cache or request."""
     cached = retrieve_from_cache_as_text(path)
     if cached is not False:
         return cached

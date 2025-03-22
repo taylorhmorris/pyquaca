@@ -12,7 +12,7 @@ from bs4 import BeautifulSoup
 from query_and_cache.cache import retrieve_or_request
 
 
-class Test(unittest.TestCase):
+class TestRetrieveOrRequest(unittest.TestCase):
     """Test case for the retrieve_or_request function."""
 
     def tearDown(self) -> None:

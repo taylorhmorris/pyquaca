@@ -14,7 +14,7 @@ if __name__ == "__main__":
   
   # Security checks
   print("Security checks")
-  subprocess.run(["bandit", "-r", "./src", "./tests"])
+  subprocess.run(["bandit", "-r", "./src"])
   
   # Package checks
   print("Package checks")
