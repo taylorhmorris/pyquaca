@@ -31,5 +31,5 @@ dev = [
   "bandit",
   "pyroma",
   "isort",
-  "docformatter",
+  "coverage"
 ]
