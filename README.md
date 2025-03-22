@@ -11,7 +11,7 @@ Query and Cache provides an interface to query APIs or make HTTP requests, parse
 You can install this package using pip:
 
 ```bash
-pip install query_and_cache
+pip install git+ssh://git@github.com/taylorhmorris/query_and_cache.git
 ```
 
 ## License
