@@ -2,10 +2,10 @@ import subprocess
 
 if __name__ == "__main__":
   # Linting / Style checks
-  subprocess.run(["pylint", "./src", "./tests"])
   subprocess.run(["black", "./src", "./tests"])
+  subprocess.run(["pylint", "./src", "./tests"])
   subprocess.run(["isort", "./src", "./tests"])
-  subprocess.run(["flake8", "./src", "./tests"])
+  subprocess.run(["flake8", "./src", "./tests"])  
   
   # Type checks
   subprocess.run(["mypy", "./src", "./tests"])
