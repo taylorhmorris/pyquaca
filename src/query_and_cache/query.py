@@ -1,3 +1,5 @@
+"""Query Class to be extended for use with specific sites"""
+
 import logging
 import os
 
@@ -24,6 +26,7 @@ class Query:
         self.logger.setLevel(logging.DEBUG)
 
     def get_full_cache_path(self, filename: str):
+        """Get the full path to the cache file"""
         return os.path.join(self.cache_path, self.service_name, filename)
 
     def retrieve_cache(self, search_string):
@@ -44,7 +47,7 @@ class Query:
                 return False
         except KeyError as e:
             word = search_string
-            self.logger.warn(f"{e}")
+            self.logger.warning("%s", e)
         cache_file_path = self.get_full_cache_path(f"{word}.json")
         return store_in_cache(cache_file_path, data)
 
@@ -54,13 +57,13 @@ class Query:
         if self.check_cache:
             cached = self.retrieve_cache(search_string)
             if cached:
-                self.logger.info(f"Search string ({search_string}) found in cache")
+                self.logger.info("Search string (%s) found in cache", search_string)
                 return self.parse_soup(cached)
-            self.logger.info(f"Search string ({search_string}) not found in cache")
+            self.logger.info("Search string (%s) not found in cache", search_string)
         else:
             self.logger.info("Skipping Cache as requested")
         url = self.url.format(search_string=search_string, api_key=self.api_key)
-        self.logger.debug(f"querying {url}")
+        self.logger.debug("querying %s", url)
         webpage = retrieve_or_request(
             url, self.get_full_cache_path(f"{search_string}.html")
         )
@@ -72,9 +75,9 @@ class Query:
         try:
             self.store_in_cache(search_string, results)
         except KeyError as e:
-            self.logger.error(f"Error storing in cache: results does not have {e} key")
+            self.logger.error("Error storing in cache: results does not have %s key", e)
         except Exception as e:
-            self.logger.error(f"Error storing in cache: {e}")
+            self.logger.error("Error storing in cache: %s", e)
         self.logger.debug("Returning query results")
         return results
 
