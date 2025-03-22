@@ -33,6 +33,10 @@ dev = [
   "isort >= 5.0.0",
   "coverage"
 ]
+types = [
+  "types-beautifulsoup4",
+  "types-requests"
+]
 
 [tool.isort]
 profile = "black"
