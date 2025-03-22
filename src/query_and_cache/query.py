@@ -2,23 +2,33 @@
 
 import logging
 import os
+from typing import NotRequired, Optional, TypedDict
 
 from bs4 import BeautifulSoup
 
 from .cache import retrieve_from_cache, retrieve_or_request, store_in_cache
 
 
+class QueryConfig(TypedDict):
+    """Configuration for Query Class"""
+
+    auth: NotRequired[str]
+    check_cache: NotRequired[bool]
+    api_key: NotRequired[str]
+    cache_path: NotRequired[str]
+
+
 class Query:
     """Query Class to be extended for use with specific sites"""
 
-    def __init__(
-        self, url, auth=None, check_cache=True, api_key=None, cache_path="cache"
-    ):
+    def __init__(self, url: str, config: Optional[QueryConfig] = None):
+        if config is None:
+            config = {}
         self.url = url
-        self.auth = auth
-        self.check_cache = check_cache
-        self.api_key = api_key
-        self.cache_path = cache_path
+        self.auth = config.get("auth", None)
+        self.check_cache = config.get("check_cache", True)
+        self.api_key = config.get("api_key", None)
+        self.cache_path = config.get("cache_path", "cache")
         self.service_name = self.__class__.__name__.lstrip("Query").lower()
         if len(self.service_name) == 0:
             self.service_name = "query"

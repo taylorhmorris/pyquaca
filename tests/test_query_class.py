@@ -17,7 +17,15 @@ class Test(unittest.TestCase):
         Test that the Query object correctly respects the parameters passed to it.
         """
 
-        query = Query("localhost", "auth_type", False, "fakekey", "new_cache")
+        query = Query(
+            "localhost",
+            config={
+                "auth": "auth_type",
+                "check_cache": False,
+                "api_key": "fakekey",
+                "cache_path": "new_cache",
+            },
+        )
         self.assertEqual(query.url, "localhost")
         self.assertEqual(query.auth, "auth_type")
         self.assertEqual(query.check_cache, False)
