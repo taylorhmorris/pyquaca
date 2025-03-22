@@ -1,0 +1,29 @@
+[project]
+name = "query_and_cache"
+version = "0.0.1"
+authors = [
+  { name="Taylor H. Morris", email="18409399+taylorhmorris@users.noreply.github.com" },
+]
+description = "Query and Cache!"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "License :: OSI Approved :: MIT License",
+]
+dependencies = [
+  "beautifulsoup4",
+  "requests"
+]
+
+[project.urls]
+Homepage = "https://github.com/taylorhmorris/query_and_cache"
+Issues = "https://github.com/taylorhmorris/query_and_cache/issues"
+
+[project.optional-dependencies]
+dev = [
+  "pytest",
+  "black",
+  "pylint"
+]
