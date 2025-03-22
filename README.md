@@ -1,6 +1,7 @@
 # Query and Cache
 ![bandit](https://github.com/taylorhmorris/query_and_cache/actions/workflows/bandit.yml/badge.svg?event=push)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+![style](https://github.com/taylorhmorris/query_and_cache/actions/workflows/lint.yml/badge.svg?event=push)
+![tests](https://github.com/taylorhmorris/query_and_cache/actions/workflows/tests.yml/badge.svg?event=push)
 
 
 Query and Cache provides an interface to query APIs or make HTTP requests, parse the response with custom parsers, and cache the result for future use.
