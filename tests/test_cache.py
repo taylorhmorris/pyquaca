@@ -1,9 +1,9 @@
 import os
 import shutil
 import unittest
-from bs4 import BeautifulSoup
 
 import requests
+from bs4 import BeautifulSoup
 
 from query_and_cache.cache import retrieve_or_request
 

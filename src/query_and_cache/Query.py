@@ -1,6 +1,6 @@
+import logging
 import os
 
-import logging
 from bs4 import BeautifulSoup
 
 from .cache import retrieve_from_cache, retrieve_or_request, store_in_cache
