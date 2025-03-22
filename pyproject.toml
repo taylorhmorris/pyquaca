@@ -30,6 +30,9 @@ dev = [
   "flake8",
   "bandit",
   "pyroma",
-  "isort",
+  "isort >= 5.0.0",
   "coverage"
 ]
+
+[tool.isort]
+profile = "black"
