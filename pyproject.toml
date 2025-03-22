@@ -4,7 +4,7 @@ version = "0.0.1"
 authors = [
   { name="Taylor H. Morris", email="18409399+taylorhmorris@users.noreply.github.com" },
 ]
-description = "Query and Cache!"
+description = "An interface to query APIs or make HTTP requests, parse the response with custom parsers, and cache the result for future use."
 readme = "README.md"
 requires-python = ">=3.8"
 classifiers = [
