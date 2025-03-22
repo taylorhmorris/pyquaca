@@ -114,5 +114,4 @@ def retrieve_or_request(url: str, path: str):
         return cached
     webpage = requests.get(url, timeout=5)
     store_in_cache_as_text(path, webpage.text)
-    # return retrieve_from_cache(path)
     return webpage.text
