@@ -9,18 +9,21 @@ if __name__ == "__main__":
   subprocess.run(["flake8", "./src", "./tests"])  
   
   # Type checks
-  print("Type checks")
+  print("\nType checks")
   subprocess.run(["mypy", "./src", "./tests"])
   
   # Security checks
-  print("Security checks")
-  subprocess.run(["bandit", "-r", "./src"])
+  print("\nSecurity checks")
+  subprocess.run(["bandit", "-q", "-r", "./src"])
   
   # Package checks
-  print("Package checks")
+  print("\nPackage checks")
   subprocess.run(["pyroma", "."])
 
   # Test coverage
-  print("Testing and coverage")
-  subprocess.run(["coverage", "run", "-m", "pytest", "./tests"])
-  subprocess.run(["coverage", "report", "-m"])
+  print("\nTesting and coverage")
+  completed = subprocess.run(["coverage", "run", "-m", "pytest", "./tests"])
+  if completed.returncode == 0:
+    subprocess.run(["coverage", "report", "-m"])
+  else:
+    print("Coverage report skipped because of failing tests")
