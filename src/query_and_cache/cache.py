@@ -67,24 +67,16 @@ def store_in_cache(file_path: str, data) -> bool:
     Returns:
         True if the data was successfully stored in the cache file, otherwise False
     """
-    logger = logging.getLogger("Cache")
-    if not file_path or len(file_path) == 0:
-        logger.error("File path is empty")
-        return False
     if not data:
-        logger.error("Data is empty")
+        logging.error("Data is empty")
         return False
-    cache_folder = os.path.dirname(file_path)
-    Path(cache_folder).mkdir(parents=True, exist_ok=True)
-    logger.debug("Updating '%s' in cache", file_path)
     try:
-        with open(file_path, "w", encoding="utf-8") as json_file:
-            json.dump(data, json_file)
+        json_data = json.dumps(data)
     except TypeError as e:
         logging.error("Could not serialize data")
         logging.error("%s", e)
         return False
-    return True
+    return store_in_cache_as_text(file_path, json_data)
 
 
 def retrieve_from_cache(file_path: str):
