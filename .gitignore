@@ -11,3 +11,6 @@ cache/
 # Coverage
 .coverage
 
+# Documentation
+docs/
+
