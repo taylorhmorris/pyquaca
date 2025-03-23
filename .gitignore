@@ -8,8 +8,9 @@ cache/
 .pytest_cache/
 .mypy_cache/
 
-# Coverage
+# Testing and Coverage
 .coverage
+.hypothesis/
 
 # Documentation
 docs/

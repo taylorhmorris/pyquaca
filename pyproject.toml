@@ -38,7 +38,8 @@ dev = [
   "bandit",
   "pyroma",
   "isort >= 5.0.0",
-  "coverage"
+  "coverage",
+  "hypothesis"
 ]
 types = [
   "types-beautifulsoup4",
