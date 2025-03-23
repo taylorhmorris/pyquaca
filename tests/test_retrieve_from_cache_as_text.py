@@ -6,13 +6,14 @@ from unittest.mock import mock_open, patch
 from query_and_cache.cache import retrieve_from_cache_as_text
 
 
-def test_rfcat_can_retrieve_text_from_cache():
+@patch("builtins.open", new_callable=mock_open, read_data="dummy test text")
+def test_rfcat_can_retrieve_text_from_cache(mock_file):
     """Test that retrieve_from_cache_as_text can retrieve text from cache."""
     file_path = os.path.join(".", "cache", "test", "html", "test_file.txt")
-    data = "This is a test string."
-    store_in_cache_as_text(file_path, data)
+    data = "dummy test text"
     result = retrieve_from_cache_as_text(file_path)
     assert result == data
+    mock_file.assert_called_once_with(file_path, "r", encoding="utf-8")
 
 
 def test_rfcat_false_with_empty_path():
