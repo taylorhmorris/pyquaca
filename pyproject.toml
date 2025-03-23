@@ -38,7 +38,8 @@ dev = [
   "bandit",
   "pyroma",
   "isort >= 5.0.0",
-  "coverage"
+  "coverage",
+  "hypothesis"
 ]
 types = [
   "types-beautifulsoup4",
@@ -50,3 +51,6 @@ docs = [
 
 [tool.isort]
 profile = "black"
+
+[tool.bandit]
+exclude_dirs = ["tests"]

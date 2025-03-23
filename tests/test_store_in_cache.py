@@ -2,6 +2,7 @@
 
 import json
 import os
+from unittest.mock import patch
 
 from query_and_cache.cache import store_in_cache
 
@@ -31,3 +32,14 @@ def test_sic_false_with_empty_path():
     data = {"msg": "This is a test string."}
     result = store_in_cache(file_path, data)
     assert result is False
+
+
+# Test store in cache returns False on TypeError
+@patch("query_and_cache.cache.json.dumps", side_effect=TypeError)
+def test_sic_false_with_type_error(mock_json):
+    """Test that store_in_cache_as_text returns False on TypeError."""
+    file_path = os.path.join(".", "cache", "test", "html", "test_file.txt")
+    data = {"key": "value"}
+    result = store_in_cache(file_path, data)
+    assert result is False
+    mock_json.assert_called_once_with(data)

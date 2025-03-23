@@ -27,8 +27,9 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        python -m pip install beautifulsoup4 requests types-requests
-        python -m pip install flake8 pylint black mypy pyroma isort
+        python -m pip install -e .
+        python -m pip install -e .[dev]
+        python -m pip install -e .[types]
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Run black
       run: |
