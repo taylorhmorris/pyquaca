@@ -7,11 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- The Parser class.
+
 ## [0.0.1] - 03-23-2025
 
 ### Added
 
-- The query class.
+- The Query class.
 - Cache functions.
 
 
