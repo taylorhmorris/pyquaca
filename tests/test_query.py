@@ -80,11 +80,7 @@ def test_retrieve_cache_not_called_if_check_cache_is_false(mock_rfc, mock_ror) -
     """Test that the retrieve_cache method is not called if check_cache is False."""
 
     query = Query("localhost", {"check_cache": False})
-    try:
-        query.query("test")
-        assert False
-    except NotImplementedError:
-        assert True
+    query.query("test")
     assert mock_rfc.called is False
     assert mock_ror.called is True
 
@@ -96,10 +92,6 @@ def test_retrieve_cache_called_if_check_cache_is_true(mock_rfc, mock_ror) -> Non
     """Test that the retrieve_cache method is called if check_cache is True."""
 
     query = Query("localhost", {"check_cache": True})
-    try:
-        query.query("test")
-        assert False
-    except NotImplementedError:
-        assert True
+    query.query("test")
     assert mock_rfc.called is True
     assert mock_ror.called is False

@@ -6,6 +6,8 @@ from typing import Any, NotRequired, Optional, TypedDict
 
 from bs4 import BeautifulSoup
 
+from query_and_cache.parser import Parser
+
 from .cache import retrieve_from_cache, retrieve_or_request, store_in_cache
 
 
@@ -16,6 +18,7 @@ class QueryConfig(TypedDict):
     check_cache: NotRequired[bool]
     api_key: NotRequired[str]
     cache_path: NotRequired[str]
+    parser: NotRequired[Parser]
 
 
 class Query:
@@ -29,6 +32,7 @@ class Query:
         self.check_cache = config.get("check_cache", True)
         self.api_key = config.get("api_key", None)
         self.cache_path = config.get("cache_path", "cache")
+        self.parser = config.get("parser", None)
         self.service_name = self.__class__.__name__.lstrip("Query").lower()
         if len(self.service_name) == 0:
             self.service_name = "query"
@@ -65,10 +69,10 @@ class Query:
         """Query the site with search_string"""
         search_string = search_string.lower()
         if self.check_cache:
-            cached: bool | BeautifulSoup = self.retrieve_cache(search_string)
+            cached: bool | Any = self.retrieve_cache(search_string)
             if cached is not False and cached is not True and cached is not None:
                 self.logger.info("Search string (%s) found in cache", search_string)
-                return self.parse_soup(cached)
+                return cached
             self.logger.info("Search string (%s) not found in cache", search_string)
         else:
             self.logger.info("Skipping Cache as requested")
@@ -81,8 +85,14 @@ class Query:
             self.logger.error("Error retrieving webpage")
             return False
         soup = BeautifulSoup(webpage, features="html.parser")
-        results = self.parse_soup(soup)
-        self.logger.debug("Results received from soup parser")
+
+        if self.parser:
+            self.logger.debug("Parsing data")
+            results = self.parser.parse(soup)
+        else:
+            self.logger.debug("No parser found, returning raw data")
+            results = soup
+
         if "word" not in results or results["word"] is None:
             results["word"] = search_string
         try:
@@ -91,10 +101,3 @@ class Query:
             self.logger.error("Error storing in cache: results does not have %s key", e)
         self.logger.debug("Returning query results")
         return results
-
-    def parse_soup(self, soup: BeautifulSoup) -> Any:
-        """Parse the webpage to find the desired information
-
-        This method should be overridden and designed to properly
-        handle data from the given website"""
-        raise NotImplementedError

@@ -3,6 +3,7 @@
 import logging
 from typing import Any
 
+
 class Parser:
     """Parser for parsing query responses before storing in cache."""
 
