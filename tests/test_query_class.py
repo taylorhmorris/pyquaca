@@ -26,7 +26,7 @@ class Test(unittest.TestCase):
                 "cache_path": "new_cache",
             },
         )
-        self.assertEqual(query.url, "localhost")
+        self.assertEqual(query.requester.base_url, "localhost")
         self.assertEqual(query.auth, "auth_type")
         self.assertEqual(query.check_cache, False)
         self.assertEqual(query.api_key, "fakekey")
