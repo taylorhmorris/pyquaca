@@ -37,7 +37,3 @@ class Test(unittest.TestCase):
         """
         query = Query("localhost")
         self.assertEqual(query.check_cache, True)
-
-
-if __name__ == "__main__":
-    unittest.main()
