@@ -5,14 +5,14 @@ from unittest import mock
 from query_and_cache.query import Query
 
 
-def test_query_can_instantiate():
+def test_query_can_instantiate() -> None:
     """Test that the Query class can be instantiated."""
 
     query = Query("localhost")
     assert isinstance(query, Query)
 
 
-def test_retrieve_cache_returns_false_with_empty_search_string():
+def test_retrieve_cache_returns_false_with_empty_search_string() -> None:
     """Test that the retrieve_cache method returns False with an empty search string."""
 
     query = Query("localhost")
@@ -21,7 +21,7 @@ def test_retrieve_cache_returns_false_with_empty_search_string():
 
 
 @mock.patch("query_and_cache.query.retrieve_from_cache", return_value=True)
-def test_retrieve_from_cache_calls_retrieve_from_cache(mock_rfc):
+def test_retrieve_from_cache_calls_retrieve_from_cache(mock_rfc) -> None:
     """Test that the retrieve_cache method calls the retrieve_from_cache function."""
 
     query = Query("localhost")
@@ -32,7 +32,7 @@ def test_retrieve_from_cache_calls_retrieve_from_cache(mock_rfc):
 
 # test store_in_cache method calls store_in_cache function
 @mock.patch("query_and_cache.query.store_in_cache", return_value=True)
-def test_store_in_cache_calls_store_in_cache(mock_sic):
+def test_store_in_cache_calls_store_in_cache(mock_sic) -> None:
     """Test that the store_in_cache method calls the store_in_cache function."""
 
     query = Query("localhost")
@@ -42,7 +42,7 @@ def test_store_in_cache_calls_store_in_cache(mock_sic):
 
 
 # test store_in_cache method returns False with empty search string
-def test_store_in_cache_returns_false_with_empty_search_string():
+def test_store_in_cache_returns_false_with_empty_search_string() -> None:
     """Test that the store_in_cache method returns False with an empty search string."""
 
     query = Query("localhost")
@@ -52,7 +52,7 @@ def test_store_in_cache_returns_false_with_empty_search_string():
 
 # test store_in_cache method returns True with valid input
 @mock.patch("query_and_cache.query.store_in_cache", return_value=True)
-def test_store_in_cache_returns_true_with_valid_input(mock_sic):
+def test_store_in_cache_returns_true_with_valid_input(mock_sic) -> None:
     """Test that the store_in_cache method returns True with valid input."""
 
     query = Query("localhost")
@@ -63,7 +63,7 @@ def test_store_in_cache_returns_true_with_valid_input(mock_sic):
 
 # test store_in_cache method updates word if data contains 'word' key
 @mock.patch("query_and_cache.query.store_in_cache", return_value=True)
-def test_store_in_cache_updates_word_if_data_contains_word_key(mock_sic):
+def test_store_in_cache_updates_word_if_data_contains_word_key(mock_sic) -> None:
     """Test that store_in_cache method updates word if data contains a 'word' key."""
 
     query = Query("localhost")
@@ -76,7 +76,7 @@ def test_store_in_cache_updates_word_if_data_contains_word_key(mock_sic):
 # test retrieve_cache method is not called from query if check_cache is False
 @mock.patch("query_and_cache.query.retrieve_or_request", return_value="<html></html>")
 @mock.patch("query_and_cache.query.retrieve_from_cache", return_value=True)
-def test_retrieve_cache_not_called_if_check_cache_is_false(mock_rfc, mock_ror):
+def test_retrieve_cache_not_called_if_check_cache_is_false(mock_rfc, mock_ror) -> None:
     """Test that the retrieve_cache method is not called if check_cache is False."""
 
     query = Query("localhost", {"check_cache": False})
@@ -92,7 +92,7 @@ def test_retrieve_cache_not_called_if_check_cache_is_false(mock_rfc, mock_ror):
 # test retrieve_cache method is called from query if check_cache is True
 @mock.patch("query_and_cache.query.retrieve_or_request", return_value="<html></html>")
 @mock.patch("query_and_cache.query.retrieve_from_cache", return_value="<html></html>")
-def test_retrieve_cache_called_if_check_cache_is_true(mock_rfc, mock_ror):
+def test_retrieve_cache_called_if_check_cache_is_true(mock_rfc, mock_ror) -> None:
     """Test that the retrieve_cache method is called if check_cache is True."""
 
     query = Query("localhost", {"check_cache": True})

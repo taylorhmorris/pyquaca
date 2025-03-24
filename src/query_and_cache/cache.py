@@ -4,6 +4,7 @@ import json
 import logging
 import os
 from pathlib import Path
+from typing import Any
 
 import requests
 
@@ -56,7 +57,7 @@ def retrieve_from_cache_as_text(file_path: str) -> str | bool:
     return False
 
 
-def store_in_cache(file_path: str, data) -> bool:
+def store_in_cache(file_path: str, data: Any) -> bool:
     """
     Write data object to cache file
 
@@ -79,7 +80,7 @@ def store_in_cache(file_path: str, data) -> bool:
     return store_in_cache_as_text(file_path, json_data)
 
 
-def retrieve_from_cache(file_path: str):
+def retrieve_from_cache(file_path: str) -> Any | bool:
     """
     Retrieve query data from cache.
 
@@ -99,7 +100,7 @@ def retrieve_from_cache(file_path: str):
     return False
 
 
-def retrieve_or_request(url: str, path: str):
+def retrieve_or_request(url: str, path: str) -> str | bool:
     """Retrieve from cache or request."""
     cached = retrieve_from_cache_as_text(path)
     if cached is not False:

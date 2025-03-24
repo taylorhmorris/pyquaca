@@ -7,7 +7,7 @@ from unittest.mock import patch
 from query_and_cache.cache import store_in_cache
 
 
-def test_sic_can_store_text_in_cache():
+def test_sic_can_store_text_in_cache() -> None:
     """Test that the store_in_cache function can store an object in a cache file."""
     file_path = os.path.join(".", "cache", "test", "json", "test_file.txt")
     data = {"msg": "This is a test string."}
@@ -18,7 +18,7 @@ def test_sic_can_store_text_in_cache():
     assert result is True
 
 
-def test_sic_false_with_invalid_input():
+def test_sic_false_with_invalid_input() -> None:
     """Test that the store_in_cache function returns False with invalid input."""
     file_path = os.path.join(".", "cache", "test", "test_file.txt")
     data = None
@@ -26,7 +26,7 @@ def test_sic_false_with_invalid_input():
     assert result is False
 
 
-def test_sic_false_with_empty_path():
+def test_sic_false_with_empty_path() -> None:
     """Test that the store_in_cache function returns False with an empty path."""
     file_path = ""
     data = {"msg": "This is a test string."}
