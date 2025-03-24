@@ -3,7 +3,7 @@
 import json
 from typing import Any
 
-from query_and_cache.cacheclass import Cache
+from query_and_cache.cache import Cache
 
 
 class JSONCache(Cache):

@@ -5,7 +5,7 @@ from typing import Any, NotRequired, Optional, TypedDict
 
 import requests
 
-from query_and_cache.cacheclass import Cache
+from query_and_cache.cache import Cache
 from query_and_cache.parser import Parser
 
 
