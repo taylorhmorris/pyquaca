@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The Parser class.
 - The Cache class.
 
+### Removed
+
+- cache functions.
+
 ## [0.0.1] - 03-23-2025
 
 ### Added

@@ -9,9 +9,9 @@ from typing import Any
 class Cache:
     """Cache class for caching query results."""
 
-    def __init__(self, cache_dir: str, ext: str = "") -> None:
+    def __init__(self, cache_dir: str, file_extension: str = "") -> None:
         self.cache_dir = cache_dir
-        self.ext = ext
+        self.file_extension = file_extension
         # Create the cache directory if it does not exist
         Path(self.cache_dir).mkdir(parents=True, exist_ok=True)
         self.logger = logging.getLogger("Cache")
@@ -26,7 +26,7 @@ class Cache:
         Returns:
             the data string if it is found in the cache, None otherwise.
         """
-        full_path = os.path.join(self.cache_dir, key + self.ext)
+        full_path = os.path.join(self.cache_dir, key + self.file_extension)
         try:
             with open(full_path, "r", encoding="utf-8") as cache_file:
                 return cache_file.read()
@@ -48,7 +48,7 @@ class Cache:
         if not key or len(key) < 1:
             self.logger.error("Invalid key")
             return False
-        full_path = os.path.join(self.cache_dir, key + self.ext)
+        full_path = os.path.join(self.cache_dir, key + self.file_extension)
         try:
             with open(full_path, "w", encoding="utf-8") as cache_file:
                 cache_file.write(value)
