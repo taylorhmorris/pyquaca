@@ -7,13 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.2] - 03-24-2025
+
+### Added
+
+- The Parser class.
+- The Cache class.
+
+### Removed
+
+- Cache functions.
+
 ## [0.0.1] - 03-23-2025
 
 ### Added
 
-- The query class.
+- The Query class.
 - Cache functions.
 
 
-[unreleased]: https://github.com/taylorhmorris/query_and_cache/compare/v0.0.1...HEAD
+[unreleased]: https://github.com/taylorhmorris/query_and_cache/compare/v0.0.2...HEAD
+[0.0.2]: https://github.com/taylorhmorris/query_and_cache/compare/v0.0.1...v0.0.2
 [0.0.1]: https://github.com/taylorhmorris/query_and_cache/releases/tag/v0.0.1
