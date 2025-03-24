@@ -21,14 +21,18 @@ class TestRetrieveOrRequest(unittest.TestCase):
         shutil.rmtree(path)
         return super().tearDown()
 
-    def test_retrieve_or_request(self):
+    def test_retrieve_or_request(self) -> None:
         """Test the retrieve_or_request function with a sample URL."""
         url = "https://example.com/"
         filepath = os.path.join(".", "cache", "test", "html", "test_file_html.html")
         text_response = retrieve_or_request(url, filepath)
         manual_request = requests.get(url, timeout=5)
+        if not isinstance(text_response, str):
+            self.fail("No text response")
         self.assertEqual(text_response, manual_request.text)
         soup = BeautifulSoup(text_response, features="html.parser")
+        if soup.title is None:
+            self.fail("No title tag found in the soup.")
         self.assertEqual(soup.title.text, "Example Domain")
 
 

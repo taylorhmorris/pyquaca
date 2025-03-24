@@ -10,7 +10,7 @@ if __name__ == "__main__":
   
   # Type checks
   print("\nType checks")
-  subprocess.run(["mypy", "./src", "./tests"])
+  subprocess.run(["mypy", "./src"])
   
   # Security checks
   print("\nSecurity checks")

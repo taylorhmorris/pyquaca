@@ -1,6 +1,7 @@
 # Build Folders
 dist/
 *.egg-info/
+build/
 
 # Cache Folders
 __pycache__/

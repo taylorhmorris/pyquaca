@@ -9,7 +9,7 @@ from hypothesis import given
 from query_and_cache.cache import store_in_cache_as_text
 
 
-def test_sicat_can_store_text_in_cache():
+def test_sicat_can_store_text_in_cache() -> None:
     """Test that the store_in_cache_as_text function can store text in a cache file."""
     file_path = os.path.join(".", "cache", "test", "html", "test_file.txt")
     data = "This is a test string."
@@ -21,7 +21,7 @@ def test_sicat_can_store_text_in_cache():
         assert result is True
 
 
-def test_sicat_false_with_invalid_input():
+def test_sicat_false_with_invalid_input() -> None:
     """Test that store_in_cache_as_text returns False with invalid input."""
     file_path = os.path.join(".", "cache", "test", "test_file.txt")
     data = {"key": "value"}
@@ -29,7 +29,7 @@ def test_sicat_false_with_invalid_input():
     assert result is False
 
 
-def test_sicat_false_with_empty_path():
+def test_sicat_false_with_empty_path() -> None:
     """Test that store_in_cache_as_text returns False with an empty path."""
     file_path = os.path.join("")
     data = "This is a test string."
@@ -38,7 +38,7 @@ def test_sicat_false_with_empty_path():
 
 
 @given(st.text())
-def test_hypo_can_store_text(s):
+def test_hypo_can_store_text(s: str) -> None:
     """Test that store_in_cache_as_text can store text in a cache file."""
     with patch("builtins.open", new_callable=mock_open) as mock_file:
         file_path = os.path.join(".", "cache", "unused", "test_file.txt")

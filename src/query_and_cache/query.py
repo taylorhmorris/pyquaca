@@ -2,7 +2,7 @@
 
 import logging
 import os
-from typing import NotRequired, Optional, TypedDict
+from typing import Any, NotRequired, Optional, TypedDict
 
 from bs4 import BeautifulSoup
 
@@ -35,11 +35,11 @@ class Query:
         self.logger = logging.getLogger(f"{self.service_name}")
         self.logger.setLevel(logging.DEBUG)
 
-    def get_full_cache_path(self, filename: str):
+    def get_full_cache_path(self, filename: str) -> str:
         """Get the full path to the cache file"""
         return os.path.join(self.cache_path, self.service_name, filename)
 
-    def retrieve_cache(self, search_string):
+    def retrieve_cache(self, search_string: str) -> bool | Any:
         """Retrieve query data from cache"""
         if len("".join(e for e in search_string if e.isalnum())) < 1:
             self.logger.debug("Invalid search string")
@@ -47,7 +47,7 @@ class Query:
         cache_file_path = self.get_full_cache_path(f"{search_string}.json")
         return retrieve_from_cache(cache_file_path)
 
-    def store_in_cache(self, search_string, data):
+    def store_in_cache(self, search_string: str, data: Any) -> bool:
         """Store query data in cache"""
         if len("".join(e for e in search_string if e.isalnum())) < 1:
             return False
@@ -61,12 +61,12 @@ class Query:
         cache_file_path = self.get_full_cache_path(f"{word}.json")
         return store_in_cache(cache_file_path, data)
 
-    def query(self, search_string: str):
+    def query(self, search_string: str) -> Any:
         """Query the site with search_string"""
         search_string = search_string.lower()
         if self.check_cache:
-            cached = self.retrieve_cache(search_string)
-            if cached:
+            cached: bool | BeautifulSoup = self.retrieve_cache(search_string)
+            if cached is not False and cached is not True and cached is not None:
                 self.logger.info("Search string (%s) found in cache", search_string)
                 return self.parse_soup(cached)
             self.logger.info("Search string (%s) not found in cache", search_string)
@@ -77,6 +77,9 @@ class Query:
         webpage = retrieve_or_request(
             url, self.get_full_cache_path(f"{search_string}.html")
         )
+        if webpage is False or webpage is True or webpage is None:
+            self.logger.error("Error retrieving webpage")
+            return False
         soup = BeautifulSoup(webpage, features="html.parser")
         results = self.parse_soup(soup)
         self.logger.debug("Results received from soup parser")
@@ -89,7 +92,7 @@ class Query:
         self.logger.debug("Returning query results")
         return results
 
-    def parse_soup(self, soup):
+    def parse_soup(self, soup: BeautifulSoup) -> Any:
         """Parse the webpage to find the desired information
 
         This method should be overridden and designed to properly

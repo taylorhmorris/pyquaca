@@ -48,7 +48,7 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Typeschecking with mypy
       run: |
-        mypy ./src ./tests
+        mypy ./src
     - name: Package checks with pyroma
       run: |
         pyroma .

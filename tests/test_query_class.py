@@ -12,7 +12,7 @@ class Test(unittest.TestCase):
     Test cases for the Query class.
     """
 
-    def test_query_respects_params(self):
+    def test_query_respects_params(self) -> None:
         """
         Test that the Query object correctly respects the parameters passed to it.
         """
@@ -32,7 +32,7 @@ class Test(unittest.TestCase):
         self.assertEqual(query.api_key, "fakekey")
         self.assertEqual(query.cache_path, "new_cache")
 
-    def test_query_has_cache_on_by_default(self):
+    def test_query_has_cache_on_by_default(self) -> None:
         """
         Test that the Query object has caching enabled by default.
         """
