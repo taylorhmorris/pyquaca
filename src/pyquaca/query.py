@@ -3,9 +3,9 @@
 import logging
 from typing import Any, NotRequired, Optional, TypedDict
 
-from query_and_cache.cache import Cache
-from query_and_cache.parser import Parser
-from query_and_cache.requester import Requester
+from pyquaca.cache import Cache
+from pyquaca.parser import Parser
+from pyquaca.requester import Requester
 
 
 class QueryConfig(TypedDict):

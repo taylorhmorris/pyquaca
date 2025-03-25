@@ -1,5 +1,5 @@
 [project]
-name = "query_and_cache"
+name = "pyquaca"
 version = "0.0.3"
 authors = [
   { name="Taylor H. Morris", email="18409399+taylorhmorris@users.noreply.github.com" },

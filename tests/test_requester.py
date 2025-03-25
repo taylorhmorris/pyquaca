@@ -2,7 +2,7 @@
 
 from unittest import mock
 
-from query_and_cache.requester import Requester
+from pyquaca.requester import Requester
 
 
 # Test Requester can be created

@@ -3,8 +3,8 @@
 import os
 from unittest import mock
 
-from query_and_cache.cache import Cache
-from query_and_cache.json_cache import JSONCache
+from pyquaca.cache import Cache
+from pyquaca.json_cache import JSONCache
 
 
 def test_json_cache_can_instantiate() -> None:

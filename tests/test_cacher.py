@@ -6,7 +6,7 @@ from unittest import mock
 from hypothesis import given
 from hypothesis import strategies as st
 
-from query_and_cache.cache import Cache
+from pyquaca.cache import Cache
 
 
 def test_cacher_can_instantiate() -> None:

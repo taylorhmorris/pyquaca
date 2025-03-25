@@ -1,6 +1,6 @@
 """APIRequester class to handle requests to a given API endpoint."""
 
-from query_and_cache.requester import Requester
+from pyquaca.requester import Requester
 
 
 class APIRequester(Requester):

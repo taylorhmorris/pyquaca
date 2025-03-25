@@ -2,7 +2,7 @@
 
 from unittest import mock
 
-from query_and_cache.query import Query
+from pyquaca.query import Query
 
 
 def test_query_can_instantiate() -> None:

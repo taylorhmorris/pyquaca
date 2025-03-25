@@ -1,6 +1,6 @@
 """Tests for the Parser class."""
 
-from query_and_cache.parser import Parser
+from pyquaca.parser import Parser
 
 
 def test_parser_has_parse_method():

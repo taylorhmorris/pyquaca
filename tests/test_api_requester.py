@@ -1,7 +1,7 @@
 """Test APIRequester class."""
 
 # Test can create APIRequester
-from query_and_cache.api_requester import APIRequester
+from pyquaca.api_requester import APIRequester
 
 
 def test_api_requester_creation():

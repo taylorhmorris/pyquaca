@@ -4,7 +4,7 @@ Unit tests for the Query class in the query_and_cache.Query module.
 
 import unittest
 
-from query_and_cache.query import Query
+from pyquaca.query import Query
 
 
 class Test(unittest.TestCase):
