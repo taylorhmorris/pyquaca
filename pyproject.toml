@@ -25,8 +25,8 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/taylorhmorris/query_and_cache"
-Issues = "https://github.com/taylorhmorris/query_and_cache/issues"
+Homepage = "https://github.com/taylorhmorris/pyquaca"
+Issues = "https://github.com/taylorhmorris/pyquaca/issues"
 
 [project.optional-dependencies]
 dev = [

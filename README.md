@@ -1,9 +1,9 @@
 # PyQuaca
-![bandit](https://github.com/taylorhmorris/query_and_cache/actions/workflows/bandit.yml/badge.svg?event=push)
-![style](https://github.com/taylorhmorris/query_and_cache/actions/workflows/lint.yml/badge.svg?event=push)
-![tests](https://github.com/taylorhmorris/query_and_cache/actions/workflows/tests.yml/badge.svg?event=push)
-[![docs](https://github.com/taylorhmorris/query_and_cache/actions/workflows/docs.yml/badge.svg?event=push)](https://taylorhmorris.github.io/query_and_cache/)
-![GitHub Release](https://img.shields.io/github/v/release/taylorhmorris/query_and_cache?sort=semver)
+![bandit](https://github.com/taylorhmorris/pyquaca/actions/workflows/bandit.yml/badge.svg?event=push)
+![style](https://github.com/taylorhmorris/pyquaca/actions/workflows/lint.yml/badge.svg?event=push)
+![tests](https://github.com/taylorhmorris/pyquaca/actions/workflows/tests.yml/badge.svg?event=push)
+[![docs](https://github.com/taylorhmorris/pyquaca/actions/workflows/docs.yml/badge.svg?event=push)](https://taylorhmorris.github.io/pyquaca/)
+![GitHub Release](https://img.shields.io/github/v/release/taylorhmorris/pyquaca?sort=semver)
 
 
 
@@ -14,12 +14,12 @@
 You can install this package using pip:
 
 ```bash
-pip install git+ssh://git@github.com/taylorhmorris/query_and_cache.git
+pip install git+ssh://git@github.com/taylorhmorris/pyquaca.git
 ```
 
 ## Documentation
 
-- [Documentation](https://taylorhmorris.github.io/query_and_cache/)
+- [Documentation](https://taylorhmorris.github.io/pyquaca/)
 
 ## License
 
