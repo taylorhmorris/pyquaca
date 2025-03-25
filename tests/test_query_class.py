@@ -1,10 +1,10 @@
 """
-Unit tests for the Query class in the query_and_cache.Query module.
+Unit tests for the Query class in the pyquaca.Query module.
 """
 
 import unittest
 
-from query_and_cache.query import Query
+from pyquaca.query import Query
 
 
 class Test(unittest.TestCase):
@@ -26,7 +26,7 @@ class Test(unittest.TestCase):
                 "cache_path": "new_cache",
             },
         )
-        self.assertEqual(query.url, "localhost")
+        self.assertEqual(query.requester.base_url, "localhost")
         self.assertEqual(query.auth, "auth_type")
         self.assertEqual(query.check_cache, False)
         self.assertEqual(query.api_key, "fakekey")

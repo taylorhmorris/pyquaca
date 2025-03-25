@@ -1,4 +1,4 @@
-# Query and Cache
+# PyQuaca
 ![bandit](https://github.com/taylorhmorris/query_and_cache/actions/workflows/bandit.yml/badge.svg?event=push)
 ![style](https://github.com/taylorhmorris/query_and_cache/actions/workflows/lint.yml/badge.svg?event=push)
 ![tests](https://github.com/taylorhmorris/query_and_cache/actions/workflows/tests.yml/badge.svg?event=push)
@@ -7,7 +7,7 @@
 
 
 
-Query and Cache provides an interface to query APIs or make HTTP requests, parse the response with custom parsers, and cache the result for future use.
+**Py**thon **Qu**ery **a**nd **Ca**che provides an interface to query APIs or make HTTP requests, parse the response with custom parsers, and cache the result for future use.
 
 ## Installation
 

@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.3] - 03-24-2025
+
+### Added
+
+- Requester class.
+- APIRequester class.
+
 ## [0.0.2] - 03-24-2025
 
 ### Added
@@ -26,6 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Cache functions.
 
 
-[unreleased]: https://github.com/taylorhmorris/query_and_cache/compare/v0.0.2...HEAD
+[unreleased]: https://github.com/taylorhmorris/query_and_cache/compare/v0.0.3...HEAD
+[0.0.3]: https://github.com/taylorhmorris/query_and_cache/compare/v0.0.2...v0.0.3
 [0.0.2]: https://github.com/taylorhmorris/query_and_cache/compare/v0.0.1...v0.0.2
 [0.0.1]: https://github.com/taylorhmorris/query_and_cache/releases/tag/v0.0.1

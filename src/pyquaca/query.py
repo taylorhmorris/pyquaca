@@ -3,10 +3,9 @@
 import logging
 from typing import Any, NotRequired, Optional, TypedDict
 
-import requests
-
-from query_and_cache.cacheclass import Cache
-from query_and_cache.parser import Parser
+from pyquaca.cache import Cache
+from pyquaca.parser import Parser
+from pyquaca.requester import Requester
 
 
 class QueryConfig(TypedDict):
@@ -18,6 +17,7 @@ class QueryConfig(TypedDict):
     cache_path: NotRequired[str]
     parser: NotRequired[Parser]
     cache: NotRequired[Cache]
+    requester: NotRequired[Requester]
 
 
 class Query:  # pylint: disable=too-few-public-methods
@@ -26,13 +26,13 @@ class Query:  # pylint: disable=too-few-public-methods
     def __init__(self, url: str, config: Optional[QueryConfig] = None):
         if config is None:
             config = {}
-        self.url = url
         self.auth = config.get("auth", None)
         self.check_cache = config.get("check_cache", True)
         self.api_key = config.get("api_key", None)
         cache_path = config.get("cache_path", "cache")
         self.parser = config.get("parser", None)
         self.cache = config.get("cache", Cache(cache_path))
+        self.requester = config.get("requester", Requester(url))
         service_name = self.__class__.__name__.lstrip("Query").lower()
         if len(service_name) == 0:
             service_name = "query"
@@ -50,17 +50,12 @@ class Query:  # pylint: disable=too-few-public-methods
             self.logger.info("Search string (%s) not found in cache", query_string)
         else:
             self.logger.info("Skipping Cache as requested")
-        url = self.url.format(search_string=query_string, api_key=self.api_key)
-        self.logger.debug("querying %s", url)
-        result = requests.get(url, timeout=5)
-        if result.status_code != 200:
-            self.logger.error("Query of %s failed (%s)", url, result.status_code)
-            return None
+        response = self.requester.request(query_string)
         if self.parser:
             self.logger.debug("Parsing data")
-            result = self.parser.parse(result)
+            response = self.parser.parse(response)
         else:
             self.logger.debug("No parser found, returning raw data")
         if self.check_cache and self.cache:
-            self.cache.store(query_string, result)
-        return result
+            self.cache.store(query_string, response)
+        return response
