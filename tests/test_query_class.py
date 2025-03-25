@@ -1,5 +1,5 @@
 """
-Unit tests for the Query class in the query_and_cache.Query module.
+Unit tests for the Query class in the pyquaca.Query module.
 """
 
 import unittest
