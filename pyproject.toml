@@ -1,6 +1,6 @@
 [project]
 name = "pyquaca"
-version = "0.0.3"
+version = "0.0.4"
 authors = [
   { name="Taylor H. Morris", email="18409399+taylorhmorris@users.noreply.github.com" },
 ]
