@@ -51,6 +51,8 @@ class Query:  # pylint: disable=too-few-public-methods
         else:
             self.logger.info("Skipping Cache as requested")
         response = self.requester.request(query_string)
+        if response is None:
+            return None
         if self.parser:
             self.logger.debug("Parsing data")
             response = self.parser.parse(response)
