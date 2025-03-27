@@ -111,3 +111,21 @@ def test_query_when_new_request_made_without_parser_but_cache_is_on() -> None:
     assert mock_requester.request.call_count == 1
     assert mock_cache.store.called is True
     assert mock_cache.store.call_count == 1
+
+
+# Test parser does not run if request fails
+def test_parser_does_not_run_if_request_fails() -> None:
+    """Test that the parser does not run if the request fails."""
+
+    mock_requester = mock.MagicMock()
+    mock_requester.request = mock.MagicMock()
+    mock_requester.request.return_value = None
+    mock_parser = mock.MagicMock()
+    config = {
+        "check_cache": False,
+        "requester": mock_requester,
+        "parser": mock_parser,
+    }
+    query = Query("localhost", config)
+    query.query("test")
+    assert not mock_parser.parse.called

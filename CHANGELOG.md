@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Support for toplevel imports
 
+### Fixed
+
+- Query continuing after request fails
+
 ## [0.0.3] - 03-24-2025
 
 ### Added
