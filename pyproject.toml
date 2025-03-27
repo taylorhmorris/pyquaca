@@ -12,7 +12,7 @@ description = "An interface to query APIs or make HTTP requests, parse the respo
 readme = "README.md"
 requires-python = ">=3.11"
 classifiers = [
-    "Development Status :: 2 - Pre-Alpha",
+    "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.11",

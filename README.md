@@ -14,7 +14,7 @@
 You can install this package using pip:
 
 ```bash
-pip install git+ssh://git@github.com/taylorhmorris/pyquaca.git
+pip install pyquaca
 ```
 
 ## Documentation
