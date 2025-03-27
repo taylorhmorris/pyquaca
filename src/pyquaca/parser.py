@@ -23,7 +23,13 @@ class SupportsParseChain(SupportsParse, SupportsChain, Protocol):
 
 
 class Parser:
-    """Parser for parsing query responses before storing in cache."""
+    """
+    Parser for parsing query responses before storing in cache.
+
+    - chain(parser) method is used to chain parsers together.
+    - parse(raw) method is used to parse the raw data and return the parsed data.
+      This method should be overridden by subclasses to implement parsing logic.
+    """
 
     def __init__(self) -> None:
         self.logger = logging.getLogger("Parser")
